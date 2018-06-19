@@ -1,0 +1,89 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.multimodule</groupId>
+    <artifactId>multimodule</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>multimodule-api-web</artifactId>
+  <packaging>war</packaging>
+  <name>multimodule-api-web</name>
+  
+  	<dependencies>
+ 		<!-- multimodule-core -->
+		<dependency>
+			<groupId>com.multimodule</groupId>
+			<artifactId>multimodule-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<!-- multimodule-util -->
+		<dependency>
+			<groupId>com.multimodule</groupId>
+			<artifactId>multimodule-util</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+  	
+  		<!-- Spring boot starter web -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>		
+		
+		<!-- mysql java connector -->
+<!-- 		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency> -->
+
+		<dependency>
+			<groupId>br.com.ingenieux</groupId>
+			<artifactId>beanstalk-maven-plugin</artifactId>
+			<version>1.5.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-nop</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Spring Boot test -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>com.vaadin.external.google</groupId>
+					<artifactId>android-json</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+  	</dependencies>
+  
+  	<properties>
+		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+		<beanstalk.versionLabel>${maven.build.timestamp}</beanstalk.versionLabel>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+	</properties>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<!-- <plugin>
+				<groupId>br.com.ingenieux</groupId>
+				<artifactId>beanstalk-maven-plugin</artifactId>
+				<version>1.5.0</version>
+				<configuration>
+					<regionName>ap-northeast-2</regionName>
+					<s3Bucket></s3Bucket>
+					<applicationName></applicationName>
+					<serverId>aws.amazon.com</serverId>
+				</configuration>
+			</plugin> -->
+		</plugins>
+	</build>
+</project>
